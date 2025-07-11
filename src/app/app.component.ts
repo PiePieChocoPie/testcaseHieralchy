@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreeNodeComponent } from './tree-node/tree-node.component';
+import { TreeNodeGenericComponent } from './tree-node/tree-node-generic.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-   imports: [CommonModule, TreeNodeComponent], 
+  imports: [CommonModule, TreeNodeGenericComponent], 
   styleUrl: './app.component.scss'
 })
 
 export class AppComponent {
-  treeLabels = ['Первое дерево', 'Второе дерево', 'Третье дерево', 'Четвёртое дерево'];
+  treeLabels = ['Первое дерево', 'Второе дерево', 'Третье дерево', 'Четвёртое дерево'];// ну и тд, можно сделать NumberToTextPipe, но в условиях тз стоял запрет на сторонние либы
   treeNodes = [
   {
     "id": 1,
@@ -106,5 +106,8 @@ export class AppComponent {
     ]
   }
 ]
+  onNodeToggled(id: number): void {
+    console.log('Раскрыт узел ID:', id);
+  }
   title = 'testcase';
 }

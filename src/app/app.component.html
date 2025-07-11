@@ -1,5 +1,21 @@
-<h2>Тестовое задание на позицию Junior Frontend-разработчик</h2>
-<ng-container *ngFor="let node of treeNodes; let i = index">
-  <h3>{{ treeLabels[i] || ('Дерево ' + (i + 1)) }}</h3>
-  <app-tree-node [node]="node"></app-tree-node>
-</ng-container>
+<ng-template #firstTree let-node>
+    <span >ID: {{ node.id }}</span> — <strong>{{ node.title }}</strong>
+</ng-template>
+
+<ng-template #secondTree let-node>
+    <span>{{ node.title }}</span>
+    <span *ngIf="node.children?.length">({{ node.children.length }} дочерн. узл.)</span>
+</ng-template>
+
+<h3>Первое дерево:</h3>
+<app-tree-node-generic
+    [node]="treeNodes[0]"
+    [contentTemplate]="firstTree"
+    [logToggle]="true">
+</app-tree-node-generic>
+
+<h3>Второе дерево:</h3>
+<app-tree-node-generic
+    [node]="treeNodes[1]"
+    [contentTemplate]="secondTree">
+</app-tree-node-generic>

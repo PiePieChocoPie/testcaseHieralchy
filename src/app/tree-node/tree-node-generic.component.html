@@ -1,0 +1,21 @@
+<div [style.marginLeft.px]="level * 20"
+     style="border-left: 1px dashed #ccc; padding-left: 8px;">
+  
+  <div style="display: flex; align-items: center; gap: 8px;"
+       [style.color]="node.is_deleted ? 'gray' : 'inherit'">
+    <span *ngIf="hasChildren()" (click)="toggle()" style="cursor: pointer;">
+      {{ expanded() ? '▲' : '▼' }}
+    </span>
+    <ng-container *ngTemplateOutlet="contentTemplate; context: { $implicit: node }"></ng-container>
+  </div>
+
+  <ng-container *ngIf="expanded() && hasChildren()">
+    <app-tree-node-generic
+      *ngFor="let child of node.children; trackBy: trackById"
+      [node]="child"
+      [level]="level + 1"
+      [contentTemplate]="contentTemplate"
+      [logToggle]="logToggle">
+    </app-tree-node-generic>
+  </ng-container>
+</div>

@@ -1,8 +1,0 @@
-<li [ngClass]="{ 'deleted': node.is_deleted }">
-  {{ node.title }}
-  <ul *ngIf="node.children?.length">
-    <ng-container *ngFor="let child of node.children">
-      <app-tree-node [node]="child"></app-tree-node>
-    </ng-container>
-  </ul>
-</li>
