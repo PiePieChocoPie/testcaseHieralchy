@@ -1,1 +1,5 @@
-123
+<h2>Тестовое задание на позицию Junior Frontend-разработчик</h2>
+<ng-container *ngFor="let node of treeNodes; let i = index">
+  <h3>{{ treeLabels[i] || ('Дерево ' + (i + 1)) }}</h3>
+  <app-tree-node [node]="node"></app-tree-node>
+</ng-container>

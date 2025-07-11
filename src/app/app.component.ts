@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { TreeNodeComponent } from './tree-node/tree-node.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+   imports: [CommonModule, TreeNodeComponent], 
   styleUrl: './app.component.scss'
 })
 
 export class AppComponent {
+  treeLabels = ['Первое дерево', 'Второе дерево', 'Третье дерево', 'Четвёртое дерево'];
   treeNodes = [
   {
     "id": 1,
